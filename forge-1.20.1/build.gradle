@@ -1,0 +1,85 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.+'
+    id 'maven-publish'
+}
+
+def mcVersion = '1.20.1'
+def forgeVersion = '47.2.0'
+def mappingsVersion = '1.20.1'
+def javaVersion = 17
+
+group = 'com.emirh.daynightbar'
+version = '1.0.0'
+base { archivesName = rootProject.ext.modId }
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: mappingsVersion
+    
+    runs {
+        client {
+            workingDirectory = file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${mcVersion}-${forgeVersion}"
+    
+    // Common module
+    implementation project(':common')
+    
+    // Using Forge's built-in config system (no external dependencies needed)
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.release = javaVersion
+}
+
+// Process resources to replace version placeholders
+tasks.named('processResources') {
+    inputs.property('version', project.version)
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand(
+            'mod_id': rootProject.ext.modId,
+            'mod_name': rootProject.ext.modName,
+            'mod_version': project.version,
+            'mod_authors': rootProject.ext.modAuthors,
+            'mod_description': rootProject.ext.modDescription,
+            'mod_license': rootProject.ext.modLicense,
+            'minecraft_version': mcVersion,
+            'forge_version': forgeVersion
+        )
+    }
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        attributes([
+            'Specification-Title': rootProject.ext.modId,
+            'Specification-Version': '1',
+            'Implementation-Version': project.version,
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    finalizedBy 'reobfJar'
+}

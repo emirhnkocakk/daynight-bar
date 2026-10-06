@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[49,)"
+license="MIT"
+issueTrackerURL="https://github.com/emirh/daynight-bar/issues"
+
+[[mods]]
+modId="daynightbar"
+version="1.0.0"
+displayName="Day & Night Cycle Bar"
+description='''A horizontal day/night cycle HUD bar for Minecraft'''
+authors=["emirh"]
+contact={
+    homepage="https://github.com/emirh/daynight-bar",
+    issues="https://github.com/emirh/daynight-bar/issues"
+}
+logoFile="assets/daynightbar/icon.png"
+
+[[dependencies.daynightbar]]
+modId="forge"
+mandatory=true
+versionRange="[49,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.daynightbar]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.4,1.20.5)"
+ordering="NONE"
+side="BOTH"

@@ -1,0 +1,53 @@
+allprojects {
+    group = 'com.emirh.daynightbar'
+    version = '1.0.0'
+    
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.fabricmc.net/' }
+        maven { url = 'https://libraries.minecraft.net/' }
+    }
+    
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+
+// Per-module Java toolchain configuration (configured in each module's build.gradle)
+
+// Version catalog - single source of truth
+ext.mcVersions = [
+    // '1.19.2': [forge: '43.4.0', mappings: '20220805.111120', java: 17],  // Disabled: mappings not available
+    '1.19.4': [forge: '45.4.0', mappings: '1.19.4', java: 17],
+    '1.20.1': [forge: '47.2.0', mappings: '1.20.1', java: 17],
+    '1.20.4': [forge: '49.2.0', mappings: '1.20.4', java: 21],
+    // '1.21'  : [forge: '55.0.0', mappings: '1.21', java: 21], // Temporarily disabled
+]
+
+// Common
+ext.modId = 'daynightbar'
+ext.modGroupId = 'com.emirh.daynightbar'
+ext.modName = 'Day & Night Cycle Bar'
+ext.modDescription = 'A horizontal day/night cycle HUD bar for Minecraft'
+ext.modAuthors = 'emirh'
+ext.modLicense = 'MIT'
+ext.modWebsite = 'https://github.com/emirh/daynight-bar'
+ext.modIssueTracker = 'https://github.com/emirh/daynight-bar/issues'
+ext.modSource = 'https://github.com/emirh/daynight-bar'
+
+// Dependencies
+ext.architecturyVersion = '8.1.11'
+ext.clothConfigVersion = '11.1.136'
+ext.modMenuVersion = '7.4.4'
+// YACL not on public maven for older versions

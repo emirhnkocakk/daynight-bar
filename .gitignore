@@ -1,0 +1,52 @@
+# Gradle
+.gradle/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.eclipse/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
+temp/
+
+# Forge
+run/
+*.mapping.txt
+
+# Local properties
+local.properties
+gradle-local.properties
+
+# Exclude old/experimental modules
+daynight-fabric-1201/
+daynight-forge/
+fabric/
+forge/
+forge-1.19.2/
+forge-1.21/
+forge-mdk.zip

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.emirh.daynightbar.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "DayNightHudRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,91 @@
+// Forge Module Template - Apply to each version-specific module
+// Usage: apply from: rootProject.file('gradle/forge-template.gradle')
+
+// Use legacy apply plugin instead of plugins {} for script application
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'maven-publish'
+
+def mcVersion = project.name.replace('forge-', '')
+def versionInfo = rootProject.ext.mcVersions[mcVersion]
+def forgeVersion = versionInfo.forge
+def mappingsVersion = versionInfo.mappings
+def javaVersion = versionInfo.java
+
+group = rootProject.ext.modGroupId
+version = rootProject.ext.version
+base { archivesName = rootProject.ext.modId }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+minecraft {
+    mappingsChannel = 'official'
+    mappingsVersion = mappingsVersion
+    
+    runs {
+        client {
+            workingDirectory = file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${mcVersion}-${forgeVersion}"
+    
+    // Common module
+    implementation project(':common')
+    
+    // Cloth Config for Forge
+    implementation "me.shedaniel:cloth-config:11.1.136-forge"
+    
+    // Mod Menu (Forge)
+    runtimeOnly "me.shedaniel:modmenu:7.4.4-forge"
+    
+    // Architectury
+    implementation "dev.architectury:architectury-api:8.1.12"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.release = javaVersion
+}
+
+// Process resources to replace version placeholders
+tasks.named('processResources') {
+    inputs.property('version', project.version)
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand(
+            'mod_id': rootProject.ext.modId,
+            'mod_name': rootProject.ext.modName,
+            'mod_version': project.version,
+            'mod_authors': rootProject.ext.modAuthors,
+            'mod_description': rootProject.ext.modDescription,
+            'mod_license': rootProject.ext.modLicense,
+            'minecraft_version': mcVersion,
+            'forge_version': forgeVersion
+        )
+    }
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        attributes([
+            'Specification-Title': rootProject.ext.modId,
+            'Specification-Version': '1',
+            'Implementation-Version': project.version,
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    finalizedBy 'reobfJar'
+}

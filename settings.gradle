@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.fabricmc.net/' }
+    }
+    
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'net.minecraftforge.gradle') {
+                useModule("net.minecraftforge.gradle:ForgeGradle:6.0.54")
+            }
+        }
+    }
+}
+
+rootProject.name = 'daynight-bar'
+
+include 'common'
+include 'forge-1.19.4'
+include 'forge-1.20.1'
+include 'forge-1.20.4'
