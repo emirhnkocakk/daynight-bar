@@ -121,12 +121,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## 👤 Author
 
-**emirh** - [GitHub](https://github.com/emirh)
-
-## 🔗 Links
-
-- **Issues**: [GitHub Issues](https://github.com/emirh/daynight-bar/issues)
-- **Source**: [GitHub Repository](https://github.com/emirh/daynight-bar)
+**emirhnkocakk** - [GitHub](https://github.com/emirhnkocakk)
 
 ---
 
