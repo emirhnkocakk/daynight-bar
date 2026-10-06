@@ -115,10 +115,6 @@ daynight-bar/
 | 00:00–03:00 | 🔵 Midnight Blue | Deep Night |
 | 03:00–06:00 | 🔵 Deep Midnight | Pre-Dawn |
 
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
 ## 👤 Author
 
 **emirhnkocakk** - [GitHub](https://github.com/emirhnkocakk)
