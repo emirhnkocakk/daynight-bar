@@ -31,7 +31,7 @@ ext.mcVersions = [
     // '1.19.2': [forge: '43.4.0', mappings: '20220805.111120', java: 17],  // Disabled: mappings not available
     '1.19.4': [forge: '45.4.0', mappings: '1.19.4', java: 17],
     '1.20.1': [forge: '47.2.0', mappings: '1.20.1', java: 17],
-    '1.20.4': [forge: '49.2.0', mappings: '1.20.4', java: 21],
+    // '1.20.4': [forge: '49.2.0', mappings: '1.20.4', java: 21], // Blocked: no mapped artifacts on Forge Maven
     // '1.21'  : [forge: '55.0.0', mappings: '1.21', java: 21], // Temporarily disabled
 ]
 

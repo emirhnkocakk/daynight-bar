@@ -28,9 +28,6 @@ A horizontal **day/night cycle HUD bar** for Minecraft Forge, showing the curren
 |-----------|-------|------|--------|----------|
 | **1.19.4** | 45.4.0 | 17 | ✅ **Working** | [JAR](forge-1.19.4/build/libs/daynightbar-1.0.0.jar) |
 | **1.20.1** | 47.2.0 | 17 | ✅ **Working (Tested)** | [JAR](forge-1.20.1/build/libs/daynightbar-1.0.0.jar) |
-| 1.20.4 | 49.2.0 | 21 | ⚠️ Structure ready, blocked on mapped artifacts | — |
-
-> **Note:** 1.20.4 module is structurally complete but cannot build due to missing mapped artifacts on Forge Maven. Requires Eclipse Temurin JDK 17 for local compilation fallback.
 
 ## 🚀 Installation
 
@@ -74,7 +71,6 @@ smoothAnimation = true
 
 ### Prerequisites
 - **Java 17** (Microsoft JDK or Eclipse Temurin)
-- **Java 21** (for 1.20.4 module)
 
 ### Build Commands
 
@@ -97,8 +93,7 @@ daynight-bar/
 ├── gradle.properties         # Microsoft JDK toolchain paths
 ├── common/                   # Shared interfaces (ConfigProvider, TimeUtils)
 ├── forge-1.19.4/             # ✅ MC 1.19.4 + Forge 45.4.0
-├── forge-1.20.1/             # ✅ MC 1.20.1 + Forge 47.2.0
-└── forge-1.20.4/             # ⚠️ MC 1.20.4 + Forge 49.2.0 (blocked)
+└── forge-1.20.1/             # ✅ MC 1.20.1 + Forge 47.2.0
 ```
 
 ### Architecture
